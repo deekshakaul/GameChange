@@ -1,0 +1,10 @@
+/* 
+  LocalizableStrings.strings
+  TableView
+
+  Created by Deeksha Kaul on 01/04/21.
+  Copyright © 2021 Deeksha Kaul. All rights reserved.
+*/
+
+"API.Error" = "Oops!! something went wrong";
+"JSON.Error" = "json error %@";

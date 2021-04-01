@@ -59,11 +59,6 @@ class TwoLabelTableViewCell: UITableViewCell {
         labelStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: LayoutConstants.padding1x).isActive = true
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setUpUI()
-    }
-    
     public func configureCell(cellObject: TwoLabelCellObject) {
         firstLabel.text = cellObject.firstText
         secondLabel.text = cellObject.secondText?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)

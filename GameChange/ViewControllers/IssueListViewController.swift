@@ -15,8 +15,8 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
     let tableView = UITableView()
     let viewModel = IssueListViewModel()
     
-    private var issueList: [IssueObject] = []
-    private var data: NSArray = []
+    var issueList: [IssueObject] = []
+    var data: NSArray = []
     
     override func loadView() {
         super.loadView()

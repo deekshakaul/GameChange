@@ -6,13 +6,17 @@
 //  Copyright © 2021 Deeksha Kaul. All rights reserved.
 //
 
+import Foundation
 import XCTest
+import Realm
+import RealmSwift
 
 class GameChangeUITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
 
+        Realm.Configuration.defaultConfiguration.inMemoryIdentifier = String(Date().hashValue)
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
@@ -31,11 +35,12 @@ class GameChangeUITests: XCTestCase {
         XCUIDevice.shared.orientation = .landscapeLeft
         let tableViewQuery = app.tables.element(boundBy: 0)
         
-        tableViewQuery.cells.element(boundBy: 1).tap()
-        app.alerts.buttons.firstMatch.tap()
-        tableViewQuery.cells.element(boundBy: 20).tap()
+        tableViewQuery.cells.element(boundBy: 0).tap()
+        let alertButton = app.alerts.buttons.firstMatch
+        if alertButton.exists {
+            alertButton.tap()
+        }
+        tableViewQuery.cells.element(boundBy: 0).tap()
         XCUIDevice.shared.orientation = .portrait
-        
-        
     }
 }

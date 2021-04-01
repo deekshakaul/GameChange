@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class IssueListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let maxCharecterLength = 140
+    
+    let twentyFourHrsDifference = Double(-24*60*60)
 
     let tableView = UITableView()
     let viewModel = IssueListViewModel()
@@ -22,6 +25,17 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
         super.loadView()
         setupTableView()
     }
+
+    func isDataOutDated() -> Bool {
+        guard let timeStamp = RealmManager.realm().objects(IssueObject.self).first?.updatedTimeStamp else { return true }
+        return timeStamp.timeIntervalSinceNow < self.twentyFourHrsDifference
+    }
+    
+    func isCommentDataOutDated() -> Bool {
+        guard let timeStamp = RealmManager.realm().objects(CommentObject.self).first?.updatedTimestamp else { return true }
+        return timeStamp.timeIntervalSinceNow < self.twentyFourHrsDifference
+    }
+
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -37,13 +51,30 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
         setTableViewConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isDataOutDated() {
+            callAPI()
+        } else{
+            fetchDataFromRealm()
+        }
+    }
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         self.navigationItem.title = "IssuesListController.Navbar.Title".localizedValue()
         tableView.register(TwoLabelTableViewCell.self, forCellReuseIdentifier: "MyCell")
         self.tableView.tableFooterView = UIView()
-        callAPI()
+    }
+
+    func fetchDataFromRealm() {
+        let results = RealmManager.realm().objects(IssueObject.self)
+        for result in results {
+            issueList.append(result)
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -62,18 +93,10 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func callAPI() {
         viewModel.fetchIssues(completion: { results in
-            self.data = results
-            for result in results {
-                let data = result as! NSDictionary
-                let issue = IssueObject()
-
-                issue.title = data["title"] as? String
-                issue.body = data["body"] as? String
-                let url = data["comments_url"] as! String
-                issue.commentUrl = url.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                self.issueList.append(issue)
-            }
+            RealmManager.deleteAll()
+            self.issueList = results
             DispatchQueue.main.async {
+                RealmManager.add(objects: self.issueList)
                 self.tableView.reloadData()
             }
         })
@@ -111,12 +134,14 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
 
     func navigateToDetailsPage(viewController: UIViewController) {
         DispatchQueue.main.async {
-            self.navigationController?.pushViewController(viewController, animated: true)
+            guard let detailsViewController = viewController as? IssueDetailsViewController else { return }
+            RealmManager.add(objects: detailsViewController.issueDetails)
+            self.navigationController?.pushViewController(detailsViewController, animated: true)
         }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return issueList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

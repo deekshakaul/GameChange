@@ -28,18 +28,19 @@ class IssueDetailsViewController: UIViewController, UITableViewDataSource, UITab
         tableView.isUserInteractionEnabled = true
         tableView.isScrollEnabled = true
         view.addSubview(tableView)
-        tableView.frame = self.view.frame
         tableView.separatorStyle = .singleLine
+        setTableViewConstraints()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        setTableViewConstraints()
     }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.navigationItem.title = "Issues"
+        self.navigationItem.title = "IssuesDetailsController.Navbar.Title".localizedValue()
         tableView.estimatedRowHeight = 85.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.register(TwoLabelTableViewCell.self, forCellReuseIdentifier: "MyCell")
@@ -57,6 +58,15 @@ class IssueDetailsViewController: UIViewController, UITableViewDataSource, UITab
         cell.configureCell(cellObject: cellObject)
         cell.selectionStyle = .none
         return cell
+    }
+    
+    func setTableViewConstraints() {
+        let tableview = tableView as UIView
+        tableview.setConstraintsToEdge(with: self.view,
+                                       left: LayoutConstants.padding1x,
+                                       right: -LayoutConstants.padding1x,
+                                       top: LayoutConstants.padding1nHalfx,
+                                       botton: -LayoutConstants.padding1nHalfx)
     }
     
 }

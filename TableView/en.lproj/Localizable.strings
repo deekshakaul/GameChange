@@ -6,5 +6,18 @@
   Copyright © 2021 Deeksha Kaul. All rights reserved.
 */
 
+//Errors
+
 "API.Error" = "Oops!! something went wrong";
 "JSON.Error" = "json error %@";
+
+// Buttons
+
+"Close.Button" = "Close";
+
+// Navbar titles
+
+"IssuesListController.Navbar.Title" = "Issues";
+"IssuesDetailsController.Navbar.Title" = "Comments";
+
+"No.Comments.Alert.Title" = "No comments to show";

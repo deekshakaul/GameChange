@@ -15,7 +15,7 @@ public class IssueDetailsViewModel {
         print(url)
         let task = URLSession.shared.dataTask(with: endpoint!) { (data, response, error) in
             guard let unwrappedData = data else {
-                print("API.Error".localizedValue(), "$$$$$$$$$")
+                print("API.Error".localizedValue())
                 return }
             do {
                 var issueDetails: [CommentObject] = []
@@ -30,7 +30,7 @@ public class IssueDetailsViewModel {
                 }
                 completion(issueDetails)
             } catch {
-                print("JSON.Error".localizedValue(), error.localizedDescription)
+                print(String(format: "JSON.Error".localizedValue(), error.localizedDescription))
             }
         }
         

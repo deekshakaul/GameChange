@@ -30,19 +30,34 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.isScrollEnabled = true
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.frame = self.view.frame
         tableView.separatorStyle = .singleLine
         tableView.estimatedRowHeight = 85.0
         tableView.rowHeight = UITableViewAutomaticDimension
         view.addSubview(tableView)
+        setTableViewConstraints()
     }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.navigationItem.title = "Issues"
+        self.navigationItem.title = "IssuesListController.Navbar.Title".localizedValue()
         tableView.register(TwoLabelTableViewCell.self, forCellReuseIdentifier: "MyCell")
         self.tableView.tableFooterView = UIView()
         callAPI()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        setTableViewConstraints()
+    }
+    
+    func setTableViewConstraints() {
+            let tableview = tableView as UIView
+            tableview.setConstraintsToEdge(with: self.view,
+                                           left: LayoutConstants.padding1x,
+                                           right: -LayoutConstants.padding1x,
+                                           top: LayoutConstants.padding1nHalfx,
+                                           botton: -LayoutConstants.padding1nHalfx)
     }
     
     func callAPI() {
@@ -51,6 +66,7 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
             for result in results {
                 let data = result as! NSDictionary
                 let issue = IssueObject()
+
                 issue.title = data["title"] as? String
                 issue.body = data["body"] as? String
                 let url = data["comments_url"] as! String
@@ -83,8 +99,8 @@ class IssueListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "No comments to show", message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Close",
+        let alert = UIAlertController(title: "No.Comments.Alert.Title".localizedValue(), message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Close.Button".localizedValue(),
                                    style: .default,
                                    handler: nil)
         alert.addAction(action)

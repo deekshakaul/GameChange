@@ -25,9 +25,10 @@ extension String {
            )
     }
     // remove last charecter till partial last word is removed
-    while str.last != " " {
-        str.popLast()
+    while !str.isEmpty && str.last != " " {
+        _ = str.popLast()
     }
+    str = str.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     return nsString.length > 140 ? str + "..." : str
    }
 }

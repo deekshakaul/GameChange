@@ -33,7 +33,7 @@
 		47F29D9B2614FAB700906798 /* CommentObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentObject.swift; sourceTree = "<group>"; };
 		47F29DA02615068100906798 /* IssueObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueObject.swift; sourceTree = "<group>"; };
 		47F29DA826150BDA00906798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9F914D712164B19D00ADF7CF /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F914D712164B19D00ADF7CF /* GameChange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameChange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F914D742164B19D00ADF7CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F914D762164B19D00ADF7CF /* IssueListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewController.swift; sourceTree = "<group>"; };
 		9F914D7B2164B19E00ADF7CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				47F29D8D2614D6C700906798 /* Extensions */,
-				9F914D732164B19D00ADF7CF /* TableView */,
+				9F914D732164B19D00ADF7CF /* GameChange */,
 				9F914D722164B19D00ADF7CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,12 +118,12 @@
 		9F914D722164B19D00ADF7CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9F914D712164B19D00ADF7CF /* TableView.app */,
+				9F914D712164B19D00ADF7CF /* GameChange.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9F914D732164B19D00ADF7CF /* TableView */ = {
+		9F914D732164B19D00ADF7CF /* GameChange */ = {
 			isa = PBXGroup;
 			children = (
 				47F29D9A2614FAA700906798 /* Model */,
@@ -136,15 +136,15 @@
 				9F914D802164B19E00ADF7CF /* Info.plist */,
 				47F29DA926150BDA00906798 /* Localizable.strings */,
 			);
-			path = TableView;
+			path = GameChange;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9F914D702164B19D00ADF7CF /* TableView */ = {
+		9F914D702164B19D00ADF7CF /* GameChange */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9F914D832164B19E00ADF7CF /* Build configuration list for PBXNativeTarget "TableView" */;
+			buildConfigurationList = 9F914D832164B19E00ADF7CF /* Build configuration list for PBXNativeTarget "GameChange" */;
 			buildPhases = (
 				9F914D6D2164B19D00ADF7CF /* Sources */,
 				9F914D6E2164B19D00ADF7CF /* Frameworks */,
@@ -154,9 +154,9 @@
 			);
 			dependencies = (
 			);
-			name = TableView;
+			name = GameChange;
 			productName = TableView;
-			productReference = 9F914D712164B19D00ADF7CF /* TableView.app */;
+			productReference = 9F914D712164B19D00ADF7CF /* GameChange.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -174,7 +174,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9F914D6C2164B19D00ADF7CF /* Build configuration list for PBXProject "TableView" */;
+			buildConfigurationList = 9F914D6C2164B19D00ADF7CF /* Build configuration list for PBXProject "GameChange" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -187,7 +187,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9F914D702164B19D00ADF7CF /* TableView */,
+				9F914D702164B19D00ADF7CF /* GameChange */,
 			);
 		};
 /* End PBXProject section */
@@ -365,12 +365,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TableView/Info.plist;
+				INFOPLIST_FILE = GameChange/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.deeksha.TableView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deeksha.GameChange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,12 +382,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TableView/Info.plist;
+				INFOPLIST_FILE = GameChange/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.deeksha.TableView;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deeksha.GameChange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -397,7 +397,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9F914D6C2164B19D00ADF7CF /* Build configuration list for PBXProject "TableView" */ = {
+		9F914D6C2164B19D00ADF7CF /* Build configuration list for PBXProject "GameChange" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F914D812164B19E00ADF7CF /* Debug */,
@@ -406,7 +406,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9F914D832164B19E00ADF7CF /* Build configuration list for PBXNativeTarget "TableView" */ = {
+		9F914D832164B19E00ADF7CF /* Build configuration list for PBXNativeTarget "GameChange" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9F914D842164B19E00ADF7CF /* Debug */,
